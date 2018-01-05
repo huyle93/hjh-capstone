@@ -36,7 +36,7 @@ def getTotalWords(s):
     
 #================= Extract PDF TO TXT ===============================
 try:
-    pdfFileObj = open('../../data/raw/download2.pdf','rb')
+    pdfFileObj = open('../../data/raw/download1.pdf','rb')
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     print("extracting data to interim...")
     pages = pdfReader.getNumPages()
@@ -68,6 +68,7 @@ def get_continuous_chunks(text):
              else:
                      continue
      return continuous_chunk
+
 for i in sentences:
     result = get_continuous_chunks(i)
     if result == []:

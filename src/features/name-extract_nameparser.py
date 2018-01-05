@@ -16,7 +16,7 @@ def get_human_names(text):
     person_list = []
     person = []
     name = ""
-    for subtree in sentt.subtrees(filter=lambda t: t.node == 'PERSON'):
+    for subtree in sentt.subtrees(filter=lambda t: t.label() == 'PERSON'):
         for leaf in subtree.leaves():
             person.append(leaf[0])
         if len(person) > 1: #avoid grabbing lone surnames

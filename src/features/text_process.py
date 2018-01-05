@@ -6,7 +6,7 @@ Created on Tue Dec  5 13:37:58 2017
 @author: huyle
 """
 import nltk
-import sys
+#nltk.download("popular")
 import PyPDF2
 import string
 from nltk.tokenize import word_tokenize
@@ -34,7 +34,7 @@ def getTotalWords(s):
     
 #================= Extract PDF TO TXT ===============================
 try:
-    pdfFileObj = open('../../data/raw/download2.pdf','rb')
+    pdfFileObj = open('../../data/raw/download1.pdf','rb')
     pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
     print("extracting data to interim...")
     pages = pdfReader.getNumPages()
@@ -62,7 +62,7 @@ try:
     words = [w for w in words if not w in stop_words]
     print("removing stopwords finished")
 # counting total words
-    print(len(words))
+    count_words = len(words)
 #    for i in words:
 #        if len(word_tokenize(i)) == 1:
 #            count += 1
@@ -71,34 +71,34 @@ try:
     for i in words:
         stripped_text = ''.join(map(str,i))+"\n"
 #        print(stripped_text)
-        with open('../../data/interim/' + txt_filename, 'ab') as f:
+        with open('../../data/processed/' + txt_filename, 'ab') as f:
             f.write(stripped_text.encode('utf-8'))
     print("{}".format("="*30 + " EXTRACT LOG " + "="*30))
-    print("{}".format("="*12 + " total " + str(count) + " of words "))
-    print("{}".format("="*12 + " .txt file exported to interim "))
+    print("{}".format("="*12 + " total " + str(count_words) + " of words "))
+    print("{}".format("="*12 + " .txt file exported to /processed "))
 except Exception as e:
     print("{} \n {} \n".format("="*30 + " EXTRACT LOG " + "="*30,str(e)))
     
 
 #================= NLTK Name Entity Recognition =====================
-def get_continuous_chunks(text):
-     chunked = ne_chunk(pos_tag(word_tokenize(text)))
-     prev = None
-     continuous_chunk = []
-     current_chunk = []
-     for i in chunked:
-             if type(i) == Tree:
-                     current_chunk.append(" ".join([token for token, pos in i.leaves()]))
-             elif current_chunk:
-                     named_entity = " ".join(current_chunk)
-                     if named_entity not in continuous_chunk:
-                             continuous_chunk.append(named_entity)
-                             current_chunk = []
-             else:
-                     continue
-     return continuous_chunk
-print(words)
-print(get_continuous_chunks(str_text))
+#def get_continuous_chunks(text):
+#     chunked = ne_chunk(pos_tag(word_tokenize(text)))
+#     prev = None
+#     continuous_chunk = []
+#     current_chunk = []
+#     for i in chunked:
+#             if type(i) == Tree:
+#                     current_chunk.append(" ".join([token for token, pos in i.leaves()]))
+#             elif current_chunk:
+#                     named_entity = " ".join(current_chunk)
+#                     if named_entity not in continuous_chunk:
+#                             continuous_chunk.append(named_entity)
+#                             current_chunk = []
+#             else:
+#                     continue
+#     return continuous_chunk
+#print(words)
+#print(get_continuous_chunks(str_text))
 #================= NLTK Sentiment =====================
 
 
