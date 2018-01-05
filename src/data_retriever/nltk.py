@@ -7,3 +7,4 @@ Created on Mon Dec  4 23:59:07 2017
 """
 
 import nltk
+nltk.download("popular")

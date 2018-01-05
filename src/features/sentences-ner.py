@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Created on Tue Dec  5 13:37:58 2017
+Created on Wed Jan  3 15:09:56 2018
 
 @author: huyle
 """
+
 import nltk
 import sys
 import PyPDF2
@@ -13,6 +14,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from nltk import ne_chunk, pos_tag, word_tokenize
 from nltk.tree import Tree
+from nltk import sent_tokenize
 # ****** pipeline *******
 # - Extract PDF to txt
 # - Process raw txt
@@ -44,38 +46,7 @@ try:
         text_list.append(text)
     str_text = "".join(text_list)
 #================= PROCESS RAW TXT =====================
-    print("{}".format("="*30 + " TEXT PROCESS " + "="*30))
-    tokens = word_tokenize(str_text)
-    print("tokenizing finished")
-    # convert to lower case
-    tokens = [w.lower() for w in tokens]
-    print("lower case finished")
-    # remove punctuation from each word
-    table = str.maketrans('', '', string.punctuation)
-    stripped = [w.translate(table) for w in tokens]
-    print("removing punctuation finished")
-    # remove remaining tokens that are not alphabetic
-    words = [word for word in stripped if word.isalpha()]
-    print("removing non-alphabetic words finished")
-    # filter out stop words
-    stop_words = set(stopwords.words('english'))
-    words = [w for w in words if not w in stop_words]
-    print("removing stopwords finished")
-# counting total words
-    print(len(words))
-#    for i in words:
-#        if len(word_tokenize(i)) == 1:
-#            count += 1
-# count duplicate
-# export text
-    for i in words:
-        stripped_text = ''.join(map(str,i))+"\n"
-#        print(stripped_text)
-        with open('../../data/interim/' + txt_filename, 'ab') as f:
-            f.write(stripped_text.encode('utf-8'))
-    print("{}".format("="*30 + " EXTRACT LOG " + "="*30))
-    print("{}".format("="*12 + " total " + str(count) + " of words "))
-    print("{}".format("="*12 + " .txt file exported to interim "))
+    sentences = sent_tokenize(str_text)
 except Exception as e:
     print("{} \n {} \n".format("="*30 + " EXTRACT LOG " + "="*30,str(e)))
     
@@ -97,8 +68,10 @@ def get_continuous_chunks(text):
              else:
                      continue
      return continuous_chunk
-print(words)
-print(get_continuous_chunks(str_text))
+for i in sentences:
+    result = get_continuous_chunks(i)
+    if result == []:
+        pass
+    else:
+        print(result)
 #================= NLTK Sentiment =====================
-
-
