@@ -8,19 +8,24 @@ Created on Thu Jan  4 02:14:02 2018
 import nltk
 import string
 from nltk import ngrams
+from ngram import NGram
 from nltk.tokenize import word_tokenize
-
+from nltk.corpus import stopwords
+result_gram = []
 #nltk.download()
-sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John Smith for the case.'
+sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John H Smith for the case. Trial Judges: Jane Hillyard'
 
 # google cloud output, store to detect confident
-return_obj = ['John Due', 'John Smith']
+return_obj = ['John Due', 'John H Smith']
 
 # search attonney key word
-def findAttorney(arg):
+def hasAttorney(arg):
     if "attorney" in arg:
         return(True)
 
+def findTrialJudges(arg):
+    if "Trial Judges" in arg:
+        return(True)
 
 # ngram
 def findGram(argtxt,n):
@@ -31,7 +36,8 @@ def findGram(argtxt,n):
     return grams_list
 
 # main
-print(findAttorney(sentence))
+print(hasAttorney(sentence))
+print(findTrialJudges(sentence))
 tokens = word_tokenize(sentence)
 table = str.maketrans('', '', string.punctuation)
 stripped = [w.translate(table) for w in tokens]
@@ -42,8 +48,23 @@ findGram_output = findGram(rebuild_sentence,4)
 #count grams
 count=0
 for i in findGram_output:
+#    print(findAttorney(i))
+    #store result
+    if hasAttorney(i) == True:
+        result_gram.append(i)
     count +=1
-    print(i)
 print(count)
+print(result_gram)
+for i in result_gram:
+    rebuild_result_gram = ' '.join(i)
+
+print(rebuild_result_gram)
+#remove stopwords#
+cachedStopWords = stopwords.words("english")
+def testFuncNew(arg):
+    arg = ' '.join([word for word in arg.split() if word not in cachedStopWords])
+    return arg
+#####################
+print(testFuncNew(rebuild_result_gram))
 
 
