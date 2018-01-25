@@ -13,7 +13,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 result_gram = []
 #nltk.download()
-sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John H Smith for the case. Trial Judges: Jane Hillyard'
+sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John Smith for the case. Trial Judges: Jane Hillyard'
 
 # google cloud output, store to detect confident
 return_obj = ['John Due', 'John H Smith']
@@ -53,18 +53,24 @@ for i in findGram_output:
     if hasAttorney(i) == True:
         result_gram.append(i)
     count +=1
-print(count)
-print(result_gram)
-for i in result_gram:
-    rebuild_result_gram = ' '.join(i)
+#print(count)
+#print(result_gram)
+lastgram = result_gram[-1]
+rebuild_lastgram = ' '.join(lastgram)
+#lastgram = ' '.join(i)
+#for i in result_gram:
+#    last_gram = ' '.join(i)
 
-print(rebuild_result_gram)
+print(rebuild_lastgram)
+
+# 2 approaches here: 1 is to use service to find PERSON entity, 2 is to use part of speech to remove all none PERSON entity
+
 #remove stopwords#
-cachedStopWords = stopwords.words("english")
-def testFuncNew(arg):
-    arg = ' '.join([word for word in arg.split() if word not in cachedStopWords])
-    return arg
-#####################
-print(testFuncNew(rebuild_result_gram))
+#cachedStopWords = stopwords.words("english")
+#def testFuncNew(arg):
+#    arg = ' '.join([word for word in arg.split() if word not in cachedStopWords])
+#    return arg
+######################
+#print(testFuncNew(rebuild_result_gram))
 
 
