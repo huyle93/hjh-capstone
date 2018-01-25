@@ -28,5 +28,5 @@ class Retriever:
 #                    return "Division " + self.option + " does not exist. "+"There are 5 divisions of Vermont: {}".format(", ".join(self.vt_court_division))
 
 
-#test = Retriever(2014, 2016, "supreme")
+#test = Retriever(2014, 2016, "supreme court")
 #print(test.retriever())
