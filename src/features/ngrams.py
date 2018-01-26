@@ -13,7 +13,7 @@ from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 result_gram = []
 #nltk.download()
-sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John Smith for the case. Trial Judges: Jane Hillyard'
+sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John H Smith for the case. Trial Judges: Jane Hillyard. Attorney Heli Amin is a flop'
 
 # google cloud output, store to detect confident
 return_obj = ['John Due', 'John H Smith']
@@ -44,7 +44,7 @@ stripped = [w.translate(table) for w in tokens]
 stripped = list(filter(None, stripped))
 rebuild_sentence = ' '.join(stripped)
 #print(rebuild_sentence)
-findGram_output = findGram(rebuild_sentence,4)
+findGram_output = findGram(rebuild_sentence,11)
 #count grams
 count=0
 for i in findGram_output:

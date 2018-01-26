@@ -76,4 +76,7 @@ data/**/*.txt
 !data/**/.gitkeep
 
 # exclude local virtualenv
-*.venv/
+*.venv/ 
+
+# exclude credentials information such as aws key
+credentials/
