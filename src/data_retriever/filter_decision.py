@@ -5,36 +5,33 @@ Created on Wed Jan 10 23:06:32 2018
 
 @author: huyle
 """
+from keyword_ import Keyword
+import string
 import time
-from collections import Counter
+
+#================= Variables ====================
 start_time = time.time()
-from flashtext.keyword import KeywordProcessor
-keyword_processor = KeywordProcessor()
-keyword = 'Attorney'
+key = "attorney"
 filename = "../../data/interim/courtdocbacon.txt"
-#strtxt = 'I have a very nice phone. I drop my phone in the toilet. I find an attorney to sue the toilet, attorney John Due'
-#with open(filename) as f:
+#================================================
 f = open(filename, 'rt')
 #for line in f:
 #    if keyword in line:
 #        print(line)
-text = f.read()
+text = f.read().lower()
+text1 = text.splitlines()
 f.close()
-
-def hasKeyword(keyword, data):
-    keyword_processor.add_keyword(keyword)
-    result = keyword_processor.extract_keywords(data)
-    if len(result) > 0:
-        return True, Counter(result)
-    else:
-        return "NOPE"
-print(hasKeyword(keyword,text))
+keyword = Keyword(key,text)
+print(keyword.hasKeyword())
+for line in text1:
+    if 'attorney' in line:
+#    if keyword.hasKeyword()[0] == True: 
+        print(line)
 
     
 # split into words by white space
 words = text.split()
 # remove punctuation from each word
-import string
 table = str.maketrans('', '', string.punctuation)
 stripped = [w.translate(table) for w in words]
 #print(stripped)

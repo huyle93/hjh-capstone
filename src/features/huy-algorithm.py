@@ -11,9 +11,12 @@ from nltk.corpus import stopwords
 from collections import Counter
 
 #load txt content
-strtext = "I have a very nice phone. I drop my phone in the toilet. I find an attorney to sue the toilet, attorney John Due"
+filename = "../../data/interim/courtdocbacon.txt"
+f = open(filename, 'rt')
+text = f.read()
+f.close()
 #tokenize words and put into 3 dimentional csv or dictionary
-tokens = word_tokenize(strtext)
+tokens = word_tokenize(text)
 print("tokenizing finished")
 # convert to lower case
 tokens = [w.lower() for w in tokens]
