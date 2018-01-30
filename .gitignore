@@ -80,3 +80,5 @@ data/**/*.txt
 
 # exclude credentials information such as aws key
 *dev_settings.py
+*src/features/cloudPlatform_apiKey.json
+
