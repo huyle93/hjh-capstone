@@ -79,4 +79,4 @@ data/**/*.txt
 *.venv/ 
 
 # exclude credentials information such as aws key
-credentials/
+*dev_settings.py

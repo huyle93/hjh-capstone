@@ -10,7 +10,6 @@ nltk
 certifi
 requests
 urllib3
-tika
 click
 Sphinx
 coverage
