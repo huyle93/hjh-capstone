@@ -5,29 +5,27 @@ Created on Thu Jan  4 02:14:02 2018
 
 @author: huyle
 """
-import nltk
 import string
 from nltk import ngrams
-from ngram import NGram
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from cloudPlatform_request_ import *
 result_gram = []
 #nltk.download()
-sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John H Smith for the case. Trial Judges: Jane Hillyard.'
+sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John H. Smith for the case. Trial Judge: Jane Hillyard.'
 
-# google cloud output, store to detect confident
-return_obj = ['John Due', 'John H Smith']
-
-# search attonney key word
+############## SEARCH KEYWORD  ################
 def hasAttorney(arg):
     if "attorney" in arg:
         return(True)
 
 def findTrialJudges(arg):
-    if "Trial Judges" in arg:
+    if "Judge" in arg:
         return(True)
 
-# ngram
+############## GET LINES HAVE KEYWORD  ################
+
+############## NGRAMS  ################
 def findGram(argtxt,n):
     grams_list = []
     sixgrams = ngrams(argtxt.split(), n)
@@ -35,17 +33,20 @@ def findGram(argtxt,n):
         grams_list.append(grams)
     return grams_list
 
-# main
-print(hasAttorney(sentence))
-print(findTrialJudges(sentence))
-tokens = word_tokenize(sentence)
-table = str.maketrans('', '', string.punctuation)
-stripped = [w.translate(table) for w in tokens]
-stripped = list(filter(None, stripped))
-rebuild_sentence = ' '.join(stripped)
-#print(rebuild_sentence)
-findGram_output = findGram(rebuild_sentence,11)
-#count grams
+############## TEXT PROCESS  ################
+def cleanSentence(sentence):
+    tokens = word_tokenize(sentence)
+    table = str.maketrans('', '', string.punctuation)
+    stripped = [w.translate(table) for w in tokens]
+    stripped = list(filter(None, stripped))
+    rebuild_sentence = ' '.join(stripped)
+    return rebuild_sentence
+
+
+############## MAIN ################
+print("has attorney: "+ str(hasAttorney(sentence)))
+print("has judge: "+ str(findTrialJudges(sentence)))
+findGram_output = findGram(cleanSentence(sentence),11)
 count=0
 for i in findGram_output:
 #    print(findAttorney(i))
@@ -53,17 +54,14 @@ for i in findGram_output:
     if hasAttorney(i) == True:
         result_gram.append(i)
     count +=1
-#print(count)
-#print(result_gram)
 lastgram = result_gram[-1]
 rebuild_lastgram = ' '.join(lastgram)
-#lastgram = ' '.join(i)
-#for i in result_gram:
-#    last_gram = ' '.join(i)
-
-print(rebuild_lastgram)
+#print(rebuild_lastgram)
 
 # 2 approaches here: 1 is to use service to find PERSON entity, 2 is to use part of speech to remove all none PERSON entity
+
+returnFromAPI = entity_sentiment_text(rebuild_lastgram)
+print(returnFromAPI)
 
 #remove stopwords#
 #cachedStopWords = stopwords.words("english")
