@@ -64,18 +64,39 @@ The goal of the project is to design a searchable database containing both state
 
 -------------
 
-## Developer Note
+## Developer Note (Setting up your environment)
 
+- [Using PyCharm](https://www.jetbrains.com/help/pycharm-edu/creating-virtual-environment.html)
+- - Highly recommended using PyCharm to create virtualenv and install packages from requirements.txt
+---
+- [Anaconda-Spyder](https://www.anaconda.com/)
+- - Make sure you are using Spyder version >= 3.2.8 (There is a bug from Spyder which causes error to connect to Google API)
 - [Python3](https://docs.python.org/3/)
-- [Anaconda](https://www.anaconda.com/)
-- [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+- - This project is written on Python 3 or greater (prefer >= 3.5)
+- [nltk](http://www.nltk.org/data.html)
+- - nltk "popular" package is required
+>``` import nltk ```
+
+>``` nltk.download("popular") ```
+- [Google Cloud Language](https://cloud.google.com/docs/authentication/getting-started)
+### Set up Google Cloud API Credentials
+- 1. You need to request a JSON API key from Huy Le
+- 2. Change that JSON file to: ``` cloudPlatform_apiKey.json ```
+- 3. Add this to your .bashrc or .zshrc
+>``` export GOOGLE_APPLICATION_CREDENTIALS="[PATH_TO_THIS_DIRECTORY]/src/features/cloudPlatform_apiKey.json" ```
+- 4. Move the ``` cloudPlatform_apiKey.json ``` to ``` hjh-capstone/src/features/ ```
+- DONE
+---
+### For everything else
+
+>``` pip install -r requirements.txt ```
 
 ## Creators
 
-Huy Le, Heli Amin
+Huy Le (developer), Heli Amin
 
 ## Copyright and license
 
-Do not use for commercial purposes
+This project is not allowed to use for commercial purposes without permission
 
 <p><small>Project structure based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>

@@ -2,6 +2,9 @@ ngram
 numpy
 flashtext
 scikit-learn
+nameparser
+google-cloud-language
+six
 scipy
 pdfminer.six
 PyPDF2

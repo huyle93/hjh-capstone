@@ -66,6 +66,9 @@ target/
 # Pycharm
 .idea
 
+# VScode
+.vscode/
+
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/
 
