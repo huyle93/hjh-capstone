@@ -5,13 +5,16 @@ Created on Thu Jan  4 02:14:02 2018
 
 @author: huyle
 """
+# validate nltk data installed
+
+
 import string
 from nltk import ngrams
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from cloudPlatform_request_ import *
 result_gram = []
-#nltk.download()
+
 sentence = 'The motion is granted. Hello world, the case is complex. John Due, the plaintiff in the case has hired attorney John H. Smith for the case. Trial Judge: Jane Hillyard.'
 
 ############## SEARCH KEYWORD  ################
@@ -60,8 +63,8 @@ rebuild_lastgram = ' '.join(lastgram)
 
 # 2 approaches here: 1 is to use service to find PERSON entity, 2 is to use part of speech to remove all none PERSON entity
 
-returnFromAPI = entity_sentiment_text(rebuild_lastgram)
-print(returnFromAPI)
+#returnFromAPI = entity_sentiment_text(rebuild_lastgram)
+#print(returnFromAPI)
 
 #remove stopwords#
 #cachedStopWords = stopwords.words("english")

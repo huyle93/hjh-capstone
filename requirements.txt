@@ -1,3 +1,6 @@
+pyfiglet
+termcolor
+colorama
 ngram
 numpy
 flashtext
