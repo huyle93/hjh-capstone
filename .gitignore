@@ -76,6 +76,7 @@ target/
 data/**/*.json
 data/**/*.pdf
 data/**/*.txt
+data/**/*.zip
 !data/**/.gitkeep
 
 # exclude local virtualenv
