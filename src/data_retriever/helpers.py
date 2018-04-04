@@ -17,7 +17,7 @@ import PyPDF2
 
 
 def getDirectorySize(mypath):
-    mypath = '../../data/raw/'
+#    mypath = '../../data/raw/'
     onlyfiles = [f for f in listdir(mypath) if isfile(join(mypath, f)) if not f.startswith('.')]
     numsize = 0
     for i in onlyfiles:
@@ -27,7 +27,7 @@ def getDirectorySize(mypath):
     return numsize
 
 
-# print(getDirectorySize('../../data/raw/'))
+print(getDirectorySize('../../data/raw/75/'))
     
 def printArt(text):
     from colorama import init
@@ -37,3 +37,4 @@ def printArt(text):
     
     cprint(figlet_format(text, font='starwars'),
            'yellow', 'on_red', attrs=['bold'])
+    
