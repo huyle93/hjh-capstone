@@ -15,6 +15,8 @@ class URLGenerator(object):
     def urlGenerator(self):
         
         """[summary]
+            what it does?
+                Generating all the URLs where the scraper will use to pull data from
             input
                 from_year: int
                 to_year: int
@@ -51,18 +53,19 @@ class URLGenerator(object):
         to_year = 2017
         endPages = 75 #0-74
         startPages = 0
+        # make change to pull data from different division by changing division name below to any of the division in vt_court_vivision dict
         division = vt_court_division["environmental"]
-
+        # url generating
         for i in range(startPages, endPages):
             build_url = baseurl + path + '?' + param1 + str(from_year) + "&" + param2 + str(to_year) + "&" + param3 + division + param4 + "&" + param5 + str(i) + ""
             # append url to listUrl
             listURL.append(build_url)
             i += 1
         
-        # return value
+        # return full list of URLs
         return listURL
 
 
 # uncomment the code below to test this method
-test = URLGenerator()
-print(test.urlGenerator())
+#test = URLGenerator()
+#print(test.urlGenerator())

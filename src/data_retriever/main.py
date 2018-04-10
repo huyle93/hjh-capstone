@@ -65,16 +65,3 @@ except Exception as e:
 print('Total PDF files size in MB: ' + str(getDirectorySize(pdfDir)))
 # print('Total Text files size in MB: ' + str(getDirectorySize(txtDir)))
 print("--- %s seconds ---" % (time.time() - start_time))
-#try:
-#    pdfFileObj = open('../../data/raw/download1.pdf','rb')
-#    pdfReader = PyPDF2.PdfFileReader(pdfFileObj)
-#    print("extracting data to interim...")
-#    pages = pdfReader.getNumPages()
-#    for i in range(pages):
-#        pageObj = pdfReader.getPage(i)
-#        text = str(pageObj.extractText())
-#        with open('../../data/interim/download1.txt', 'ab') as f:
-#            f.write(text.encode('utf-8'))
-#    print("txt data in interim")
-#except Exception as e:
-#    print("{} \n {} \n".format("="*30 + " EXTRACT LOG " + "="*30,str(e)))
