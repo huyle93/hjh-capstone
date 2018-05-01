@@ -10,13 +10,13 @@ from nameparser import HumanName
 name = ["Thomas Durkin", "John Zaikowski", "Michelle Slack", "Anthony Gildersleeve"]
 resultName = []
 for i in name:
-     eachName = HumanName(i)
-     nameObject = {}
-     nameObject['firstname'] = eachName.first
-     nameObject['lastname'] = eachName.last
-     resultName.append(nameObject)
+    eachName = HumanName(i)
+    nameObject = {}
+    nameObject['firstname'] = eachName.first
+    nameObject['lastname'] = eachName.last
+    resultName.append(nameObject)
 
-print(resultName)
+print(resultName[len(resultName)-1])
 # print(name.as_dict())
 # print(name.first, name.last)
 
