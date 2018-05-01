@@ -18,6 +18,10 @@ from google.cloud.language import types
 import six
 import sys
 
+# ********** config **********
+import os
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="cloudPlatform_apiKey.json"
+
 
 def entity_sentiment_text(text):
     """Detects entity sentiment in the provided text."""
@@ -48,3 +52,4 @@ def entity_sentiment_text(text):
 #        print(u'Salience: {}'.format(entity.salience))
 #        print(u'Sentiment: {}\n'.format(entity.sentiment))
 
+print(entity_sentiment_text("John Doe is an attorney"))

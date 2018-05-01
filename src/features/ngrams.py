@@ -74,4 +74,4 @@ rebuild_lastgram = ' '.join(lastgram)
 ######################
 #print(testFuncNew(rebuild_result_gram))
 
-
+print(findGram("John Zaikowski Attorney Petitioner Vermont ",3))
