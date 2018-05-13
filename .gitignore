@@ -86,3 +86,10 @@ data/**/*.zip
 *dev_settings.py
 *src/features/cloudPlatform_apiKey.json
 
+# web application
+src/visualization/package-lock.json
+src/visualization/node_modules/
+src/visualization/Documentation/
+src/visualization/src/assets/sass/light-bootstrap-dashboard.css
+src/visualization/src/assets/css/
+src/visualization/src/assets/img/

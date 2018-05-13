@@ -1,0 +1,78 @@
+.table {
+  .radio,
+  .checkbox {
+    position: relative;
+    height: 20px;
+    display: block;
+    width: 20px;
+    padding: 0px 0px;
+    margin: 0px 5px;
+    text-align: center;
+    .icons {
+      left: 5px;
+    }
+  }
+  .tbl-header {
+    background-color: rgba(255,255,255,0.3);
+    border-bottom: 1px solid gray;
+    >thead>tr>th,
+    >thead>tr>td {
+      padding: 12px 2em;
+      vertical-align: middle;
+    }
+    >thead>tr>th {
+      border-bottom-width: 1px;
+      font-size: $font-size-small;
+      text-transform: uppercase;
+      color: $dark-gray;
+      font-weight: $font-weight-normal;
+      padding-bottom: 5px;
+    }
+  }
+  .tbl-body {
+    overflow-x: auto;
+    height: 16em;
+    >tbody>tr>th,
+    >tbody>tr>td {
+      padding: 1em 3em;
+      vertical-align: middle;
+    }
+    >tbody>tr>td {
+      font-size: 14px;
+    }
+    >tbody>tr {
+      position: relative;
+      &:hover {
+        .td-actions .btn {
+          @include opacity(1);
+        }
+      }
+    }
+  }
+  >tfoot>tr>th,
+  >tfoot>tr>td {
+    padding: 12px 8px;
+    vertical-align: middle;
+  } // MANU : aici este ceva schimbat!!!
+  .td-actions .btn {
+    @include opacity(0.36);
+    &.btn-xs {
+      padding-left: 3px;
+      padding-right: 3px;
+    }
+  }
+  .td-actions {
+    min-width: 90px;
+  }
+}
+/* for custom scrollbar for webkit browser*/
+  
+::-webkit-scrollbar {
+    width: 6px;
+} 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(25, 88, 204, 0.3); 
+} 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px rgb(17, 138, 146); 
+}
