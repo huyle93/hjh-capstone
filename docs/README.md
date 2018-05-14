@@ -64,7 +64,7 @@ The goal of the project is to design a searchable database containing both state
 
 -------------
 
-## Developer Note (Setting up your environment)
+## Developer Note
 
 - [Using PyCharm](https://www.jetbrains.com/help/pycharm-edu/creating-virtual-environment.html)
 - - Highly recommended using PyCharm to create virtualenv and install packages from requirements.txt
